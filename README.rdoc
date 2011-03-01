@@ -1,2 +1,21 @@
+=DB Tasks
+
 Currently just a MySQL import script for copying from a MySQL server by SSHing
 into a production box.
+
+==Installation
+
+Add the following line to your Gemfile. You probably want it inside a
+:development group.
+
+  gem 'db_tasks'
+
+==Usage
+
+You get a db:import_production task. This requires that ssh_username and
+ssh_host keys are added to the production stanza of your config/database.yml.
+
+This task SSHs to the host, then runs a mysqldump using the credentials defined
+for your production database. It pipes these into the local 'mysql' command,
+using the current environment's database credentials.
+
