@@ -16,6 +16,8 @@ You get a db:import_production task. This requires that ssh_username and
 ssh_host keys are added to the production stanza of your config/database.yml.
 
 This task SSHs to the host, then runs a mysqldump using the credentials defined
-for your production database. It pipes these into the local 'mysql' command,
-using the current environment's database credentials.
+for your production database. It bzips and stores the dump both on the server
+and locally, then sends the dump to your local database.
+
+It's assumed that there's no password on your local database.
 
